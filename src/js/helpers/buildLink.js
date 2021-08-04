@@ -6,6 +6,7 @@ import {isEmpty} from './object'
  */
 export default async (a, sessionID, offerings = false) => {
 	try {
+        console.log(offerings);
 		let url = new URL(a.href)
 
 		// Add offeringID.1 parameter to only the Buy Box links.
