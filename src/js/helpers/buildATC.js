@@ -8,9 +8,17 @@ import buildBuyBox from './buildBuyBox'
 import attachEvents from './attachEvents'
 
 export default async (link) => {
+	console.log('link', link)
 	if (!isLinkedImage(link) && !isBuyBox(link) && !isCustomLink(link)) {
 		return
 	}
+
+	console.log(
+		'if check passed --->',
+		isLinkedImage(link),
+		isBuyBox(link),
+		isCustomLink(link)
+	)
 
 	if (isBuyBox(link)) {
 		link = await buildBuyBox(link)
@@ -21,6 +29,8 @@ export default async (link) => {
 		CB.sessionID || getCookie('session-id'),
 		CB.offerings || []
 	)
+
+    console.log('newLink', newLink);
 
 	if (newLink !== link.href) {
 		link.href = newLink
