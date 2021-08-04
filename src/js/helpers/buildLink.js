@@ -6,7 +6,6 @@ import {isEmpty} from './object'
  */
 export default async (a, sessionID, offerings = false) => {
 	try {
-        console.log(offerings);
 		let url = new URL(a.href)
 
 		// Add offeringID.1 parameter to only the Buy Box links.
@@ -71,7 +70,6 @@ export default async (a, sessionID, offerings = false) => {
 
 				// Get all the ASIN's from the link
 				const ASIN_LIST = url.searchParams.getAll('asin')
-                console.log('ASIN_LIST', ASIN_LIST)
 
 				let promoCodes = []
 
@@ -85,7 +83,6 @@ export default async (a, sessionID, offerings = false) => {
 				ASIN_LIST.forEach((asin, index) => {
 					// Loop through the offerings object and find matching ASIN.
 					offerings.forEach((offer) => {
-                        console.log('offerings', asin, offer)
 						if (!isEmpty(offer) && offer.asin === asin) {
 							// If the offer has a promo, let's add the necessary attributes
 							// for our clipCoupon.js function to work.
