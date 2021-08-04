@@ -57,6 +57,7 @@ export default async (a, sessionID, offerings = false) => {
 				!url.searchParams.has('offeringID.1') &&
 				!url.searchParams.has('submit.addToCart')
 			) {
+                console.log('LinkedImage', offerings);
 				/**
 				If the link does not already have the addToCart param or an offeringID pararm,
 				then Creative should build the URL's for the Linked Image components like so:
@@ -70,6 +71,7 @@ export default async (a, sessionID, offerings = false) => {
 
 				// Get all the ASIN's from the link
 				const ASIN_LIST = url.searchParams.getAll('asin')
+                console.log('ASIN_LIST', ASIN_LIST)
 
 				let promoCodes = []
 
@@ -83,6 +85,7 @@ export default async (a, sessionID, offerings = false) => {
 				ASIN_LIST.forEach((asin, index) => {
 					// Loop through the offerings object and find matching ASIN.
 					offerings.forEach((offer) => {
+                        console.log('offerings', asin, offer)
 						if (!isEmpty(offer) && offer.asin === asin) {
 							// If the offer has a promo, let's add the necessary attributes
 							// for our clipCoupon.js function to work.
