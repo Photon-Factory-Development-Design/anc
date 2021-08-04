@@ -1,0 +1,38 @@
+{
+  "name": "amzn-atc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "browserslist": [
+    "> 1%",
+    "ie 10"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "idempotent-babel-polyfill": "^7.4.4",
+    "intersection-observer": "^0.7.0",
+    "mutation-observer": "^1.0.3",
+    "whatwg-fetch": "^3.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/preset-env": "^7.6.0",
+    "autoprefixer": "^9.6.1",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^3.2.0",
+    "mini-css-extract-plugin": "^0.8.0",
+    "node-sass": "^4.12.0",
+    "postcss-loader": "^3.0.0",
+    "sass-loader": "^8.0.0",
+    "style-loader": "^1.0.0",
+    "url-polyfill": "^1.1.7",
+    "webpack": "^4.39.3",
+    "webpack-cli": "^3.3.8"
+  }
+}
