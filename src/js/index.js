@@ -110,7 +110,7 @@ const watchForNewNodes = (mutations, observer) => {
 ;(() => {
 	try {
 		const TARGET_NODE = document.body
-		const TABS = document.querySelectorAll('.lp-Tabs-Tab:not(.is-selected)')
+		const TABS = document.querySelectorAll('.lp-Tabs-Tab')
 		const CONFIG = {childList: true, subtree: true}
 		const OBSERVER = new MutationObserver(watchForNewNodes)
 	
