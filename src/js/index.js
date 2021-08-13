@@ -67,14 +67,19 @@ var waitForGlobal = function(key, sub, callback) {
 	if (window[key]) {
 		if (sub) {
 			if (window[key][sub]) {
-				callback()
+                setTimeout(function() {
+                    callback();
+                }, 500);
+				
 			} else {
 				setTimeout(function() {
 					waitForGlobal(key, sub, callback)
 				}, 100)
 			}
 		} else {
-			callback()
+			setTimeout(function () {
+				callback()
+			}, 500)
 		}
 	} else {
 		setTimeout(function() {
