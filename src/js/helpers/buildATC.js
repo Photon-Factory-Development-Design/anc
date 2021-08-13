@@ -30,7 +30,7 @@ export default async (link) => {
 		CB.offerings || []
 	)
 
-    console.log('newLink', newLink);
+    console.log('newLink', link, newLink);
 
 	if (newLink !== link.href) {
 		link.href = newLink
