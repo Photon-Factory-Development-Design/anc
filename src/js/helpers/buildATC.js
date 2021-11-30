@@ -15,7 +15,7 @@ const sellerPriorities = {
 }
 
 function sortOfferingIdsBySeller(offerings) {
-	return offerings.sort(
+	return (offerings || []).sort(
 		(a, b) => sellerPriorities[a.sellerId] - sellerPriorities[b.sellerId]
 	)
 }
@@ -39,6 +39,8 @@ export default async (link) => {
 
 	// sort offering IDs
 	let offeringIds = sortOfferingIdsBySeller(CB.offerings)
+
+	console.log('offeringIds', offeringIds)
 
 	let newLink = await buildLink(
 		link,
