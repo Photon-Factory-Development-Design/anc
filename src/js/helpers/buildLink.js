@@ -4,7 +4,7 @@ import {isEmpty} from './object'
 /**
  *
  */
-export default async (a, sessionID, offerings = false) => {
+export default async (a, sessionID, offerings = []) => {
 	try {
 		let url = new URL(a.href)
 
@@ -20,8 +20,14 @@ export default async (a, sessionID, offerings = false) => {
 				let promoCodes = []
 
 				// Loop through the offerings object and find matching ASIN.
-				offerings.map((offer) => {
-					if (!isEmpty(offer) && offer.asin === ASIN) {
+				for (let _i = 0; _i < offerings.length; _i++) {
+					const offer = offerings[_i]
+
+					if (
+						!isEmpty(offer) &&
+						offer.asin === ASIN &&
+						offer.offeringID
+					) {
 						// If the offer has a promo, let's add the necessary attributes
 						// for clipCoupon.js to work.
 						if (offer.promo) {
@@ -41,13 +47,16 @@ export default async (a, sessionID, offerings = false) => {
 						url.searchParams.set('submit.addToCart', 'addToCart')
 						url.searchParams.set('offeringID.1', offer.offeringID)
 
-						if (promoCodes.length)
+						if (promoCodes.length) {
 							a.setAttribute(
 								'data-product-promo',
 								JSON.stringify(promoCodes)
 							)
+						}
+
+						break
 					}
-				})
+				}
 			}
 
 			// Let's work some voodoo magic on the LinkedImage components.
@@ -56,7 +65,7 @@ export default async (a, sessionID, offerings = false) => {
 				!url.searchParams.has('offeringID.1') &&
 				!url.searchParams.has('submit.addToCart')
 			) {
-                console.log('LinkedImage', offerings);
+				console.log('LinkedImage', offerings)
 				/**
 				If the link does not already have the addToCart param or an offeringID pararm,
 				then Creative should build the URL's for the Linked Image components like so:
@@ -82,8 +91,15 @@ export default async (a, sessionID, offerings = false) => {
 				// the corresponding offer object from CB.offerings.
 				ASIN_LIST.forEach((asin, index) => {
 					// Loop through the offerings object and find matching ASIN.
-					offerings.forEach((offer) => {
-						if (!isEmpty(offer) && offer.asin === asin) {
+
+					for (let _i = 0; _i < offerings.length; _i++) {
+						const offer = offerings[_i]
+
+						if (
+							!isEmpty(offer) &&
+							offer.asin === asin &&
+							offer.offeringID
+						) {
 							// If the offer has a promo, let's add the necessary attributes
 							// for our clipCoupon.js function to work.
 							if (offer.promo) {
@@ -103,8 +119,10 @@ export default async (a, sessionID, offerings = false) => {
 								`offeringID.${index + 1}`,
 								offer.offeringID
 							)
+
+							break
 						}
-					})
+					}
 				})
 
 				if (promoCodes.length)
