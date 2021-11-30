@@ -14,7 +14,11 @@ const sellerPriorities = {
 	A2STO040EWVPIF: 3,
 }
 
-function sortOfferingIdsBySeller(offerings) {}
+function sortOfferingIdsBySeller(offerings) {
+	return offerings.sort(
+		(a, b) => sellerPriorities[a.sellerId] - sellerPriorities[b.sellerId]
+	)
+}
 
 export default async (link) => {
 	// console.log('link', link)
