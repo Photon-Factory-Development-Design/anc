@@ -59,7 +59,7 @@ Sample offering Item structure:
 2. we're using firebase to get updated stock result. We're running cron jobs to get updated stock status from AWS page on cloud server. But what you added to offerings.js is default stock option and that status will be updated about every hour/3 hours etc. 
 
 
-### How seller priorities works? 
+### How does Seller priorities feature work? 
 1. We should fetch all offering IDs for each seller and default seller product. 
 2. Then, we should sort it when we add offeringID to add to cart button. And select offerningId which has no error in highest priority order.
 3. To fetch offering id of seller, you can add `?smid={{sellerId}}` at the end of product URL. 
