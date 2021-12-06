@@ -42,7 +42,7 @@ e.g.
 >Note: In the above example, `https://cdn.jsdelivr.net/gh/` is a Github CDN server URL. `Photon-Factory-Development-Design` is a Organization/Owner name. `anc@1.3.7` is a repository name and version name that you added. `/dist/main.js` is the path to js file.
 This is essential to match styles to AWS texts, rating stars, buttons etc. 
 
-## How does `Add to cart` feature works automatically inside React app? 
+## How does `Add to cart` feature works automatically inside app? 
 1. We're fetching offeringIds which represents unique id for each product to add to product in AWS. Although those have same product ASIN id, the offeringIds will be different for different sellers in AWS. So fetching this offeringID is essential. 
 Sample offering Item structure: 
 ```
